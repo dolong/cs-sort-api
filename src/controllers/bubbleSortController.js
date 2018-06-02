@@ -1,18 +1,14 @@
-import { pathOr } from 'ramda';
+import { sortControllerCreator } from './sortController';
 
+/**
+ * Perform bubble sort on the provided unsorted array of numbers
+ *
+ * @param unsortedNumbers
+ * @returns {Promise.<T>}
+ */
 export const bubbleSort = (unsortedNumbers) => {
   const result = unsortedNumbers.map((i => i + 1));
-  return Promise.resolve(result);
+  return result;
 };
 
-export const bubbleSortController = (request, response) => {
-  const unsortedNumbers = JSON.parse(pathOr(
-    '[]',
-    ['body', 'unsortedNumbers'],
-    request,g
-  ));
-
-  bubbleSort(unsortedNumbers)
-    .then(result => response.status(200).send(result))
-    .catch(error => response.status(500).send(error));
-};
+export const bubbleSortController = sortControllerCreator(bubbleSort);

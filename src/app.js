@@ -2,7 +2,6 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import router from './routes/index';
 
-
 // Create an instance of express
 const app = express();
 

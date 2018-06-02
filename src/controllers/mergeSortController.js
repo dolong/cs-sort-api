@@ -1,18 +1,14 @@
-import { pathOr } from 'ramda';
+import { sortControllerCreator } from './sortController';
 
+/**
+ * Perform merge sort on the provided unsorted array of numbers
+ *
+ * @param unsortedNumbers
+ * @returns {Promise.<T>}
+ */
 export const mergeSort = (unsortedNumbers) => {
   const result = unsortedNumbers.map((i => i + 2));
-  return Promise.resolve(result);
+  return result;
 };
 
-export const mergeSortController = (request, response) => {
-  const unsortedNumbers = JSON.parse(pathOr(
-    '[]',
-    ['body', 'unsortedNumbers'],
-    request,
-  ));
-
-  mergeSort(unsortedNumbers)
-    .then(result => response.status(200).send(result))
-    .catch(error => response.status(500).send(error));
-};
+export const mergeSortController = sortControllerCreator(mergeSort);
