@@ -20,7 +20,7 @@ export const isNumber = item =>
 export const isValidArray = (numberArray) => {
   if (!Array.isArray(numberArray)) {
     return false;
-  };
+  }
 
   const notNumbers = numberArray.filter(compose(not, isNumber));
   return notNumbers.length === 0;
