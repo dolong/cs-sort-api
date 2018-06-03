@@ -7,8 +7,12 @@ import { sortControllerCreator } from './sortController';
  * @returns {Promise.<T>}
  */
 export const bubbleSort = (unsortedNumbers) => {
-  const result = unsortedNumbers.map((i => i + 1));
-  return result;
+  try {
+    const result = unsortedNumbers.map((i => i + 1));
+    return result;
+  } catch (error) {
+    throw new Error(`bubbleSort Error: ${error.message}`);
+  }
 };
 
 export const bubbleSortController = sortControllerCreator(bubbleSort);

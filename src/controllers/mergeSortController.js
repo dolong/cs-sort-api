@@ -7,8 +7,12 @@ import { sortControllerCreator } from './sortController';
  * @returns {Promise.<T>}
  */
 export const mergeSort = (unsortedNumbers) => {
-  const result = unsortedNumbers.map((i => i + 2));
-  return result;
+  try {
+    const result = unsortedNumbers.map((i => i + 2));
+    return result;
+  } catch (error) {
+    throw new Error(`mergeSort Error: ${error.message}`);
+  }
 };
 
 export const mergeSortController = sortControllerCreator(mergeSort);
