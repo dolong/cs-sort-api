@@ -1,6 +1,5 @@
 import { sortControllerCreator } from './sortController';
 
-
 const merge = (left, right) => {
   const result = [];
 
@@ -31,7 +30,6 @@ const mergeSortLocal = (inputArray) => {
 
   return merge(mergeSortLocal(left), mergeSortLocal(right));
 };
-
 
 /**
  * Perform merge sort on the provided unsorted array of numbers
