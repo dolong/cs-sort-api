@@ -4,6 +4,8 @@ import { pathOr } from 'ramda';
 
 import router from './routes/index';
 
+import logger from './logger/logger';
+
 import {
   PORT_NUMBER,
   DEFAULT_ERROR_STATUS,
@@ -19,6 +21,12 @@ const port = process.env.PORT || PORT_NUMBER;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// Added logger middleware
+app.use((request, _response, next) => {
+  logger.log('info', `${request.method}: ${request.path}`);
+  next();
+});
+
 // Add router middleware
 app.use('/', router);
 
@@ -29,14 +37,15 @@ app.use('/', router);
  * eslint rule no-unused-var
  */
 app.use((error, request, response, _next) => {
-  // todo - log the error...
   // If the error object does not have an httpStatusCode,
   // send default error status
   response
     .status(pathOr(DEFAULT_ERROR_STATUS, ['statusCode'], error))
-    .send(pathOr('', ['message'], error));
+    .json(pathOr('', ['message'], error));
 });
 
-/* eslint-disable no-console */
 // Set the port number that app will listen for requests
-app.listen(port, () => console.log(`App listening on port ${port}.`));
+app.listen(
+  port,
+  () => logger.log('info', `App listening on port ${port}.`),
+);

@@ -39,6 +39,6 @@ export const sortControllerCreator = sortFunction => (request, response, next) =
 
     return response.status(200).send(sortedNumbers);
   } catch (error) {
-    return response.status(500).send(error.message);
+    return errorHandler(500, error.message, next);
   }
 };
