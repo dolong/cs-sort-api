@@ -1,5 +1,11 @@
 import { sortControllerCreator } from './sortController';
 
+/**
+ * Merges two arrays comparing values in a left array to right array
+ *
+ * @param left
+ * @param right
+ */
 const merge = (left, right) => {
   const result = [];
 
@@ -20,6 +26,10 @@ const merge = (left, right) => {
   return result;
 };
 
+/**
+ * Recursively merge sorts two arrays by splitting until length is 1 or less
+ * @param inputArray
+ */
 const mergeSortLocal = (inputArray) => {
   if (inputArray.length < 2) {
     return inputArray;

@@ -1,8 +1,8 @@
 import { sortControllerCreator } from './sortController';
 
-const swap = (value1, value2) => [value2, value1];
+export const swap = (value1, value2) => [value2, value1];
 
-const bubbleSortLocal = (input) => {
+export const bubbleSortLocal = (input) => {
   const arrLen = input.length;
   const outArray = Object.assign([], input);
 
