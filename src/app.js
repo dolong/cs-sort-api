@@ -2,6 +2,10 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import { pathOr } from 'ramda';
 
+import webpack from 'webpack';
+import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpackConfig from './../webpack.config';
+
 import router from './routes/index';
 
 import logger from './logger/logger';
@@ -11,11 +15,20 @@ import {
   DEFAULT_ERROR_STATUS,
 } from './constants';
 
+// Create webpack compiler
+const compiler = webpack(webpackConfig);
+
 // Create an instance of express
 const app = express();
 
 // Set up port number
 const port = process.env.PORT || PORT_NUMBER;
+
+// Tell express to use the webpack-dev-middleware and use the webpack.config.js
+// configuration file as a base.
+app.use(webpackDevMiddleware(compiler, {
+  publicPath: webpackConfig.output.publicPath,
+}));
 
 // Use body parser as middleware to parse requests
 app.use(bodyParser.json());
