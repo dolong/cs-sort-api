@@ -31,12 +31,10 @@ Table of Contents
 - [Routes](#routes)
 - [Considerations](#considerations)
 - [Getting Started](#getting-started)
-- [Additional Ideas](#additional-ideas)
-- [Test Cases](#Test-Cases)
-- [Additional Ideas](#additional-ideas)
-- [Bubble Sort Notes on Complexity](#Bubble-Sort-Notes-on-Complexity)
-- [Merge Sort Notes on Complexity](#Merge-Sort-Notes-on-Complexity)
-- [Benchmarking Ideas](#Benchmarking-Ideas)
+- [Test Cases](#test-cases)
+- [Bubble Sort Notes on Complexity](#bubble-sort-notes-on-complexity)
+- [Merge Sort Notes on Complexity](#merge-sort-notes-on-complexity)
+- [Benchmarking Ideas](#benchmarking-ideas)
 
 
 Routes
@@ -51,7 +49,7 @@ Considerations
 
 - ***BONUS:*** I used ES6 and added esLint to check the code
 - ***BONUS:*** I have a [second branch](https://github.com/dolong/cs-sort-api/tree/BONUS/Webpack), that uses Webpack to create a bundle `app.bundle.js`.
-  - When switch branches make sure you run `rm -rf node_modules && npm install`
+  - When switch branches make sure you run `rm -rf node_modules/ && npm install`
   - To build and run the server on this branch, use: `npm start`
   - The current Webpack configuration is currently on `development` mode only.
 - Best practice for NodeJS: I've included eslint, mocha and chai for testing, babel for compiling ES6, webpack for bundling and ramda for utility functions.
@@ -64,17 +62,20 @@ The easiest way to get started is to clone the repository:
 
 ```
 # Get the latest snapshot
-git clone cs-sort-api
+git clone https://github.com/dolong/cs-sort-api.git
 
 # Change directory
 cd cs-sort-api
 
 # Create a log file at src/logs/app.log
 
+# Remove NPM dependencies (if you are switching between two branches)
+rm -rf node_modules/
+
 # Install NPM dependencies
 npm install
 
-# Then simply start the app
+# Then simply start the app. This command also build the bundle in BONUS/Webpack branch.
 npm start
 ```
 
@@ -95,6 +96,7 @@ Project Structure
 | src\logger\winstonConfig.js             | Winston config file for logging                    |
 | src\routes\index                        | Router                    |
 | src\utils\utils.js                      | Utility functions                   |
+| src\utils\utils.spec.js                 | Unit tests for utility functions                   |
 | src\app.js                              | The main application file                                    |
 | src\constants.js                        | Defined constants                                            |
 | .eslintrc                               | Rules for eslint linter                                      |
@@ -121,7 +123,7 @@ Error Messages
 Test Cases
 --------
 
-For this node project I used Mocha and Chai. All the test files are created as *.spec.js
+For testing this node project, I used Mocha and Chai. All the test files are created as `*.spec.js`
 
 **RUN WITH**
 ```
