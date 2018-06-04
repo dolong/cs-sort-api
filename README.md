@@ -180,7 +180,7 @@ Bubble Sort isn't a sort that is frequently used in every day execution. Reason 
 Merge Sort Notes
 -------------	
 
-Merge sort's worst-case is O(n.log(n)), but in this implementation you need to use additional memory for "left", "right" and "result", not to mention that it’s not ‘in place’. during merging, it creates a copy of the entire array being sorted, which means it copes more than a constant number of elements at some time. Due to this, the space complexity of this algorithm is actually greater than most, and are not commonly used in larger systems where space is at a premium. Some in place sorts include selection sort and insertion sort.
+Merge sort's worst-case is O(n.log(n)), but in this implementation you need to use additional memory for "left", "right" and "result", not to mention that it’s not ‘in place’. During merging, it creates a copy of the entire array being sorted, which means it copes more than a constant number of elements at some time. Due to this, the space complexity of this algorithm is actually greater than most, and are not commonly used in larger systems where space is at a premium. Some in place sorts include selection sort and insertion sort.
 For sure the running time of user defined merge sort in javascript will be slower than Array.prototype.sort which I believe is using QuickSort.
 
 Benchmarking Ideas
