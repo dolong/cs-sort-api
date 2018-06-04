@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon src/app.js --exec babel-node --presets es2015",
     "test": "mocha --compilers js:babel-core/register ./**/*.spec.js",
-    "lint": "eslint . --ext .js --ignore-pattern node_modules/"
+    "lint": "eslint . --ext .js"
   },
   "author": "Long Do",
   "license": "ISC",
