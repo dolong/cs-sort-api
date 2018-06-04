@@ -2,18 +2,19 @@ import assert from 'assert';
 import {
   describe,
   it,
+  beforeEach,
 } from 'mocha';
+
+import {
+  getUnsortedNumbers,
+  sortControllerCreator,
+} from './sortController';
 
 const chai = require('chai');
 const sinon = require('sinon');
 const sinonChai = require('sinon-chai');
 
 chai.use(sinonChai);
-
-import {
-  getUnsortedNumbers,
-  sortControllerCreator,
-} from './sortController';
 
 let mockRequest;
 let mockResponse;
@@ -53,7 +54,7 @@ describe('sortControllerCreator', () => {
     sortControllerCreator(mockSortFunction)(mockRequest, mockResponse, mockNext);
 
     // mockNext is called in errorHandler
-    chai.expect(mockNext.called).to.be.true;
+    chai.expect(mockNext.called).to.equal(true);
   });
 
   it('should throw an error for nested array', () => {
@@ -70,7 +71,7 @@ describe('sortControllerCreator', () => {
     sortControllerCreator(mockSortFunction)(mockRequest, mockResponse, mockNext);
 
     // mockNext is called in errorHandler
-    chai.expect(mockNext.called).to.be.true;
+    chai.expect(mockNext.called).to.equal(true);
   });
 
   it('should throw an error for object', () => {
@@ -85,6 +86,6 @@ describe('sortControllerCreator', () => {
     sortControllerCreator(mockSortFunction)(mockRequest, mockResponse, mockNext);
 
     // mockNext is called in errorHandler
-    chai.expect(mockNext.called).to.be.true;
+    chai.expect(mockNext.called).to.equal(true);
   });
 });
